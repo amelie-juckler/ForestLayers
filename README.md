@@ -25,6 +25,7 @@ You can install the latest version of *ForestLayers* as follows:
 
 ``` r
 if (!require("remotes")) install.packages("remotes")
+
 devtools::install_github("amelie-juckler/ForestLayers")
 ```
 
@@ -35,7 +36,9 @@ requests:
 
 ``` r
 ?VerticalLayers_from_1Dprofile
+
 ?VerticalLayers_from_3Dgrid
+
 ?export_DVV
 ```
 
@@ -61,10 +64,41 @@ structured format outside the R environment.
 ### Script example
 
 ``` r
-library(ForestLayers)
-```
 
-In construction …
+library(ForestLayers)
+
+# Import your data
+
+filename <- "C:/Data/test-profile.xlsx" # Example with an excel file
+profile <- readxl::read_xlsx(filename, sheet = "Sheet1")
+profile <- as.data.frame(profile)
+
+# Package parameters
+
+output_dir <- "C:/Output"
+plot_name <- "test-profile"
+col_name <- "PAD (m2/m3)"
+diff_threshold = 0.25
+diff_max_threshold = 0.25
+
+# Use function designed for 1D data
+
+DVV <- VerticalLayers_from_1Dprofile(profile = profile,
+                                  diff_threshold = diff_threshold,
+                                  diff_max_threshold = diff_max_threshold,
+                                  col_name = col_name,
+                                  print = FALSE, 
+                                  debug = FALSE, 
+                                  export = TRUE, 
+                                  output_dir = output_dir, 
+                                  plot_name = plot_name)
+                                  
+# Export results
+
+results <- export_DVV(ForestLayersList = DVV, output_dir = output_dir, plot_name = plot_name)
+
+cat("Plot", plot_name, "exported", "\n")
+```
 
 ### Sample results
 
@@ -77,4 +111,4 @@ paper’s publication.
 
 ## Sample data
 
-In construction …
+Sample data will be available after the paper’s publication.
