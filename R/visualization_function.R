@@ -60,8 +60,6 @@ visu <- function(finalList, col_name = "VegDens", debug = F) {
       geom_path(data = complet, aes(x = VegDens_pred, y = z, color = .data$label), linewidth = 0.7) + # Weibull estimations
       geom_hline(aes(yintercept = hline_y, color = "Layer limit"), linetype = "dashed", linewidth = 0.5) +
       geom_point(data = complet, aes(x = VegDens_max_weibull, y = peak_position_weibull, color = "Maximum"), size = 1.5) + # Add maxima
-      geom_text(data = params_df, aes(x = .data$x_pos, y = .data$z_pos, label = .data$param_text, color = .data$label),
-                hjust = 0, vjust = -0.5, size = 2, show.legend = FALSE) +
       labs(title = paste0("Comparison of ", col_name, " values and fitted Weibull"),
            x = col_name, y = "Height above ground (m)", color = "Legend") +
       theme_minimal() +
