@@ -68,12 +68,14 @@ visu <- function(finalList, col_name = "VegDens", debug = F) {
         legend.position = c(0.7, 0.5),
         legend.justification = "left",
         plot.margin = margin(5, 15, 5, 5), # top, right, bottom, left
+        plot.background  = element_rect(fill = NA, color = NA),
+        panel.background = element_rect(fill = NA, color = NA),
         legend.background = element_rect(fill = "grey95", color = NA),
         legend.key = element_rect(fill = "grey95", color = NA),
         legend.key.width = unit(1, "lines"),
         legend.key.height = unit(0.5, "lines"),
-        legend.text = element_text(size = 5),
-        legend.title = element_text(size = 6),
+        legend.text = element_text(size = 7),
+        legend.title = element_text(size = 8),
         axis.title.x = element_text(size = 8),   # size of the title for the x axe
         axis.title.y = element_text(size = 8),   # size of the title for the Y axe
         axis.text.x  = element_text(size = 5),   # size of the spacing for the X axe

@@ -24,7 +24,7 @@ export_DVV <- function(ForestLayersList, output_dir = NULL, plot_name = NULL) {
   layersList$quality_metrics <- stats
   write_xlsx(layersList, file.path(output_dir, paste0("ForestLayers_", plot_name, ".xlsx")))
   plot <- ForestLayersList$final_plot
-  ggsave(file.path(output_dir, paste0("ForestLayers_visualization_", plot_name, ".png")), plot)
+  ggsave(file.path(output_dir, paste0("ForestLayers_visualization_", plot_name, ".png")), plot, bg = "transparent")
 
   cat("Plot ", plot_name, " exported", "\n")
   cat("\n")
